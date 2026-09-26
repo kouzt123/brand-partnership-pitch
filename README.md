@@ -12,7 +12,7 @@ Despite the repository name, this skill produces branded video concepts and prod
 
 ## See it in action: MrBeast × iPhone Duo
 
-**One channel + one product brief → three scripts, six storyboard frames and a five-page editable script document.**
+**One channel + one product brief → three scripts, six storyboard frames and a compact single-column editable script document.**
 
 > **Unofficial concept ad — not a real collaboration or endorsement.** The scenario, dialogue, participants and prize are fictional. Product information comes from Apple; the host's appearance is referenced from actual TikTok video frames.
 
@@ -29,7 +29,7 @@ The selected 40-second concept, *Everybody in the photo*, turns a group-photo gi
 - Three distinct, complete scripts matched to observed creator formats, voice and production resources.
 - Brand/style review, production difficulty, safety notes and a ranked recommendation. Review provenance stays explicit; separate passes are not presented as independent-model consensus.
 - **Black-and-white hand-drawn storyboards using actual frames from the original creator videos as image references.** Text descriptions supplement the images; they do not replace them.
-- Editable Word, matching PDF, embedded-image HTML and plain text with AV directions, timecodes, full dialogue and production notes.
+- Compact single-column Word/PDF, responsive HTML and copyable text, with complete dialogue and scene directions. Full briefs, review and sources remain in companion production notes; `--include-notes` appends them to the document.
 - Scene-specific revisions, independent visual/audio locks, version snapshots and restore. Dialogue-only edits reuse valid images; changed visuals invalidate affected storyboards.
 
 By default, every scene in the selected/recommended script is illustrated. The other two complete scripts are clearly marked as text-only until selected. You can request all alternatives illustrated or only one script. Scene count and duration follow the brief rather than a fixed template.
@@ -125,6 +125,6 @@ python scripts/security_check.py
 python skills/brand-partnership-pitch/scripts/brand_pitch.py doctor
 ```
 
-The existing workflow passed 40 behavioral tests and live platform/transcription canaries. The renamed publication is checked again before release. See [validation details and limits](skills/brand-partnership-pitch/references/validation.md). Tests do not guarantee access to every protected video or all future provider versions. Local faster-whisper model inference has not been live-tested in the recorded acceptance run.
+The current workflow passes 42 behavioral tests and live platform/transcription canaries. The current layout is also checked with illustrated and long-dialogue fixtures. See [validation details and limits](skills/brand-partnership-pitch/references/validation.md). Tests do not guarantee access to every protected video or all future provider versions. Local faster-whisper model inference has not been live-tested in the recorded acceptance run.
 
 Fictional structural fixtures and the explicitly published concept demo are distributed. Real-person source frames, downloaded media, live API datasets, private briefs and private acceptance artifacts are excluded. The MIT code license does not grant rights to third-party creator media. The bundled CJK font retains its [OFL license](skills/brand-partnership-pitch/assets/fonts/OFL.txt).

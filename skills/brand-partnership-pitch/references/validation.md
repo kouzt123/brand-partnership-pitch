@@ -35,6 +35,10 @@ An initial YouTube attempt from a Python 3.9 environment installed obsolete yt-d
 
 ## Automated checks
 
-40 behavioral tests cover time ranges and missing evidence, actual reference requirements and hashes, black-and-white image acceptance, review aggregation/ranking/freshness, full/partial scene locks, dialogue-only image reuse, changed-image invalidation, snapshot/restore, provider normalization and interrupted paid-run recovery, subtitle parsing, real FFmpeg audio/silent fixtures and complete DOCX dialogue including long ensemble scripts. The skill-creator structural validator also passes.
+42 behavioral tests cover time ranges and missing evidence, actual reference requirements and hashes, black-and-white image acceptance, review aggregation/ranking/freshness, full/partial scene locks, dialogue-only image reuse, changed-image invalidation, snapshot/restore, provider normalization and interrupted paid-run recovery, subtitle parsing, real FFmpeg audio/silent fixtures and complete DOCX dialogue including long ensemble scripts. The skill-creator structural validator also passes.
 
 This is a concrete one-channel creative acceptance test plus platform API canaries, not a claim that every creator, language, protected platform video or future provider version has been tested. API access and imagegen tool availability remain environment-dependent.
+
+## Compact document layout — 2026-09-27
+
+The illustrated six-scene demo was re-rendered with the single-column template and visually checked on all six pages using the canonical document renderer. All spoken lines remained extractable. A Chinese long-dialogue fixture exercised continuation pages and the optional full-notes appendix. The HTML was viewed at 390 px and desktop widths, with no horizontal overflow. This is rendered-layout verification, not a physical Word mobile app test.

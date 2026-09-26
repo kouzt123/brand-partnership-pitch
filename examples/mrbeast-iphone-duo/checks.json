@@ -5,7 +5,7 @@
   "selected_scenes": 6,
   "script_alternatives": 3,
   "illustrated_alternatives": 1,
-  "pdf_pages": 5,
+  "pdf_pages": 6,
   "validation": {
     "valid": true,
     "errors": [],
@@ -17,7 +17,8 @@
       2,
       3,
       4,
-      5
+      5,
+      6
     ],
     "status": "passed",
     "canonical_renderer": "documents render_docx.py"
@@ -26,36 +27,40 @@
   "raw_media_published": false,
   "files": {
     "README.md": {
-      "sha256": "39033cae65cf3055417e30f8befd6f249c6eefff2aed507f999d66dc36c13cc1",
-      "bytes": 4215
+      "sha256": "808e8f13d46053fda3682b752966c6deb4989aaf949b7a0b53d152a9dd168a79",
+      "bytes": 4706
     },
     "alternatives.md": {
       "sha256": "b45985c3c21cfba4654865094ab4f87e4767eda954f5b526ea6c171bac20cb39",
       "bytes": 3629
     },
     "previews/page-02.png": {
-      "sha256": "17fdf4bcd28e6db87210a7f5b4c3937077fcc1331512066cbf3494563dafe405",
-      "bytes": 496494
+      "sha256": "4fd9eba223cf564bb13a14d8a53d625bf87ce765277706d80f13985dad1f1527",
+      "bytes": 393331
     },
     "previews/page-03.png": {
-      "sha256": "0c11f217d185d24b2c5e498bcd2b711d4105e898df88511d992b79078b3d42ed",
-      "bytes": 383423
+      "sha256": "a4c47f9e372be15705ff872ed2efb819387b533734d6b377d86d5303c4bb5e13",
+      "bytes": 282356
+    },
+    "production-notes.md": {
+      "sha256": "e0fea0fe580332a7e9ba78867806d6e60f466c149516f0a48b30fe14a58acf54",
+      "bytes": 4039
     },
     "prompts.md": {
       "sha256": "fd7b3a5bf3298ff9d07745371563f9ca90ca66cf0dab9ba61a2426639067294f",
       "bytes": 2883
     },
     "script.docx": {
-      "sha256": "f56f04f104260867775c6c3125792b3dd516360b5024f2d1e4cc49197974a2d7",
-      "bytes": 14588331
+      "sha256": "242c5f2e5cb2e22f2ab9192977237e01d512eea6aec84fd98035fc6327738f68",
+      "bytes": 2512543
     },
     "script.md": {
       "sha256": "840437a2da58e515db817fc2570af006563a55bc7a47d7e24875f0cd82b7d0db",
       "bytes": 3072
     },
     "script.pdf": {
-      "sha256": "c2d5b79b92e4f1ad61c06dc24e954913218893f05bc0578f5b85cc916ce8e759",
-      "bytes": 646949
+      "sha256": "d37bcbc137b306053276f63e200e7c603019621bb447073975f0111f935233a4",
+      "bytes": 767397
     },
     "sources.md": {
       "sha256": "140d778dab978e40f14550f3414d8583d315ca20f03d0be6f9a3c5cc3eee9fd4",
@@ -85,5 +90,12 @@
       "sha256": "af925c3897d550b338f5943d17a4c88f9e0209e1f0e62f4ed8906492a7010600",
       "bytes": 2353878
     }
+  },
+  "updated_at": "2026-09-27",
+  "layout": "Narrow single column, 12 pt body; supporting production notes are separate",
+  "mobile_preview": {
+    "viewport_width": 390,
+    "horizontal_overflow": false,
+    "physical_word_mobile_tested": false
   }
 }

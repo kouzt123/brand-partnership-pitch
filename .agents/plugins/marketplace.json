@@ -9,7 +9,7 @@
       "source": {
         "source": "url",
         "url": "https://github.com/kouzt123/brand-partnership-pitch.git",
-        "ref": "v1.0.0"
+        "ref": "v1.1.0"
       },
       "policy": {
         "installation": "AVAILABLE",

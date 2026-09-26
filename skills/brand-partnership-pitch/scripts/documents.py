@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
+from io import BytesIO
 import os
 from pathlib import Path
 import re
@@ -14,7 +15,7 @@ from common import SkillError, file_digest, local_asset, read_json, run, write_j
 from script_data import validate
 
 
-def render(script_path, out, *, theme_path=None, docx_only=False, soffice=None, allow_missing_images=False):
+def render(script_path, out, *, theme_path=None, docx_only=False, soffice=None, allow_missing_images=False, include_notes=False):
     from docx import Document
     from docx.shared import Inches, Pt, RGBColor
     from docx.oxml import OxmlElement
@@ -56,125 +57,120 @@ def render(script_path, out, *, theme_path=None, docx_only=False, soffice=None, 
         style.font.color.rgb = RGBColor.from_string(theme["ink"])
     normal = doc.styles["Normal"]
     normal.font.size = Pt(theme["body_size"])
-    normal.paragraph_format.space_after = Pt(7)
+    normal.paragraph_format.space_after = Pt(6)
     normal.paragraph_format.line_spacing = 1.12
-    doc.styles["Title"].font.size = Pt(34)
-    doc.styles["Title"].font.bold = True
-    doc.styles["Caption"].font.bold = False
-    for name, size in (("Heading 1", 23), ("Heading 2", 16), ("Heading 3", 11)):
-        doc.styles[name].font.size = Pt(size)
-        doc.styles[name].font.color.rgb = RGBColor.from_string(theme["accent"])
+    normal.paragraph_format.widow_control = True
+    grid = OxmlElement("w:snapToGrid")
+    grid.set(qn("w:val"), "0")
+    normal.element.get_or_add_pPr().append(grid)
+    for name, size in (("Title", 22), ("Heading 1", 18), ("Heading 2", 14), ("Heading 3", 12)):
+        style = doc.styles[name]
+        style.font.size = Pt(size)
+        style.font.bold = True
+        style.font.color.rgb = RGBColor.from_string("000000")
+        style.paragraph_format.space_before = Pt(10 if name != "Title" else 0)
+        style.paragraph_format.space_after = Pt(5)
+        style.paragraph_format.keep_with_next = True
+    for name in ("Subtitle", "Caption"):
+        doc.styles[name].font.italic = False
+        doc.styles[name].font.size = Pt(10.5)
+        doc.styles[name].font.color.rgb = RGBColor.from_string(theme["muted"])
+        doc.styles[name].paragraph_format.space_after = Pt(6)
     doc.core_properties.title = script["title"]
     doc.core_properties.author = "Brand Partnership Pitch"
     doc.core_properties.subject = "Video production script"
     chinese = script["language"].lower().startswith("zh")
-    labels = ({"overview": "创意概览", "brief": "创作目标", "recommended": "推荐方案", "visual": "画面与调度", "audio": "台词与声音", "onscreen": "屏幕文字", "notes": "拍摄备注", "production": "拍摄准备", "checks": "需求核对", "sources": "创作依据", "cast": "人物", "scene": "场景", "sample": "分镜示意", "missing": "分镜图未生成", "objective": "目标", "audience": "受众", "include": "必须包含", "avoid": "避免", "facts": "已确认信息"}
-              if chinese else {"overview": "Creative overview", "brief": "The brief", "recommended": "Recommended", "visual": "Visual & direction", "audio": "Dialogue & sound", "onscreen": "On-screen text", "notes": "Production notes", "production": "Shoot checklist", "checks": "Requirements review", "sources": "Creative references", "cast": "Cast", "scene": "Scene", "sample": "Storyboard illustration", "missing": "Storyboard not generated", "objective": "Objective", "audience": "Audience", "include": "Must include", "avoid": "Must avoid", "facts": "Confirmed facts"})
+    labels = ({"visual": "画面", "audio": "台词与声音", "onscreen": "屏幕文字", "notes": "备注", "scene": "场景", "missing": "分镜图未生成", "angle": "创意", "objective": "目标", "support": "制作备忘"}
+              if chinese else {"visual": "Visual", "audio": "Audio", "onscreen": "On screen", "notes": "Note", "scene": "Scene", "missing": "Storyboard not generated", "angle": "Angle", "objective": "Objective", "support": "Production notes"})
 
     def para(text, style=None):
         return doc.add_paragraph(text, style)
 
-    def tagged(label, content):
-        if content:
-            p = para("")
-            p.add_run(label + "  ").bold = True
-            p.add_run(content)
-        return
+    def tagged(label, content, size=None):
+        if not content:
+            return None
+        p = para("")
+        p.add_run(label + "  ").bold = True
+        p.add_run(content)
+        if size:
+            for r in p.runs:
+                r.font.size = Pt(size)
+        return p
 
     def tc(seconds):
         return f"{int(seconds // 60):02d}:{seconds % 60:04.1f}"
 
-    p = para("BRAND PARTNERSHIP PITCH  /  SCRIPT DOCUMENT")
-    p.runs[0].font.color.rgb = RGBColor.from_string(theme["accent"])
-    p.runs[0].font.size = Pt(9)
     para(script["title"], "Title")
-    para(f"{script['brief'].get('brand_name', '')} × {script['channel']['name']}  ·  {datetime.now().strftime('%Y-%m-%d')}".strip(" ×"), "Subtitle")
-    para(script["summary"])
-    para(labels["brief"], "Heading 2")
     brief = script["brief"]
-    tagged(labels["objective"], brief["objective"])
-    tagged(labels["audience"], brief["audience"])
-    for key, label in (("tone", "语气 / Tone"), ("product_name", "产品 / Product"), ("usage_context", "使用场景 / Usage"), ("campaign_goal", "商业目标 / Goal")):
-        tagged(label if chinese else label.split(" / ")[-1], brief.get(key, ""))
-    tagged("可选形式" if chinese else "Acceptable formats", ", ".join(brief.get("acceptable_formats", [])))
-    for key, label in (("must_include", "include"), ("must_avoid", "avoid"), ("facts", "facts")):
-        if brief[key]:
-            tagged(labels[label], " · ".join(brief[key]))
-    para(labels["overview"], "Heading 2")
-    for i, v in enumerate(script["variations"], 1):
-        tagged(f"{i:02d}  {v['title']}" + (f"  /  {labels['recommended']}" if v["recommended"] else ""), v["angle"])
-    for variant in script["variations"]:
-        doc.add_page_break()
-        para(variant["title"], "Heading 1")
-        para(f"{variant['format']}  /  {variant['duration_seconds']:g}s  /  {variant['aspect_ratio']}", "Subtitle")
-        para(variant["fit_reason"])
-        review = variant.get("verification", {})
-        if review.get("status") == "reviewed":
-            tagged("REVIEW", f"Match {review['match_score']}/100 · Production {review['production_level']} · Brand safe: {review['brand_safe']}")
-
-        if script.get("cast"):
-            tagged(labels["cast"], " · ".join(c["name"] + (f" — {c['role']}" if c.get("role") else "") for c in script["cast"]))
-        has_storyboards = any(s.get("image") for s in variant["scenes"])
-        # Product AV view: paired Visual/Audio cells with editable text and embedded sketch.
+    para(f"{brief.get('brand_name', '')} × {script['channel']['name']}".strip(" ×"), "Subtitle")
+    # Retain supplied disclosures/context verbatim; never truncate to fit a page.
+    p = para(script["summary"])
+    for r in p.runs:
+        r.font.size = Pt(11)
+    multiple = len(script["variations"]) > 1
+    for vi, variant in enumerate(script["variations"]):
+        if vi:
+            doc.add_page_break()
+        para(variant["title"], "Heading 1" if multiple else "Heading 2")
+        para(f"{variant['duration_seconds']:g}s  ·  {variant['aspect_ratio']}  ·  {variant['format']}", "Subtitle")
         for i, scene in enumerate(variant["scenes"], 1):
-            if has_storyboards and i > 1 and i % 2 == 1:
-                doc.add_page_break()
-            para(f"{labels['scene']} {i:02d}   {tc(scene['start'])} – {tc(scene['end'])}   {scene['title']}", "Heading 3")
-            table = doc.add_table(rows=1, cols=2)
-            table.autofit = False
-            table.columns[0].width = Inches(width * .48)
-            table.columns[1].width = Inches(width * .52)
-            left, right = table.rows[0].cells
-            left.width, right.width = Inches(width * .48), Inches(width * .52)
-            for cell, label in ((left, labels['visual']), (right, labels['audio'])):
-                cell.paragraphs[0].add_run(label).bold = True
-                cell.paragraphs[0].paragraph_format.space_after = Pt(5)
+            first = len(doc.paragraphs)
+            para(f"{labels['scene']} {i:02d}  {scene['title']}", "Heading 3")
+            para(f"{tc(scene['start'])} – {tc(scene['end'])}", "Caption")
             if scene.get('image'):
                 asset = local_asset(script_path.parent, scene['image']['path'])
+                picture = str(asset)
                 with Image.open(asset) as im:
                     w, h = im.size
-                p = left.add_paragraph()
+                    # Optimize only the embedded document copy; retain full-resolution source assets.
+                    if im.mode in ("RGB", "L"):
+                        packed = BytesIO()
+                        im.save(packed, format="JPEG", quality=92, subsampling=0, optimize=True)
+                        if packed.tell() < asset.stat().st_size:
+                            packed.seek(0)
+                            picture = packed
+                p = para("")
                 p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-                drawing = p.add_run().add_picture(str(asset), width=Inches(min(width * .44, 2.3 * w / h)))
+                drawing = p.add_run().add_picture(picture, width=Inches(min(width, theme.get("image_max_height_inches", 2.1) * w / h)))
                 drawing._inline.docPr.set('descr', scene['visual'])
             else:
-                left.add_paragraph(labels['missing'], 'Caption')
-            left.add_paragraph(scene['visual'])
+                para(labels['missing'], 'Caption')
+            tagged(labels['visual'], scene['visual'])
+            p = para(labels['audio'])
+            p.runs[0].bold = True
+            p.paragraph_format.space_after = Pt(3)
+            first_audio = len(doc.paragraphs)
             for line in scene['audio'].splitlines():
-                right.add_paragraph(line)
-            for key in ('onscreen_text', 'notes'):
-                if scene[key]:
-                    p = right.add_paragraph()
-                    p.add_run(labels['onscreen' if key == 'onscreen_text' else 'notes'] + '  ').bold = True
-                    p.add_run(scene[key])
-            for cell in (left, right):
-                for p in cell.paragraphs:
-                    p.paragraph_format.space_after = Pt(5)
-                    p.paragraph_format.line_spacing = 1.08
-                    for r in p.runs:
-                        r.font.size = Pt(10)
-        if has_storyboards:
-            doc.add_page_break()
-        para(labels["production"], "Heading 1")
-        for item in variant["production"]:
-            para(item, "List Bullet")
-        if review.get("status") == "reviewed":
-            para("Reviewer notes", "Heading 2")
-            para(review['reviewer_notes'])
-        para(labels["checks"], "Heading 2")
-        for item in variant["requirements_check"]:
-            para(item, "List Bullet")
-    if script.get("evidence"):
-        para(labels["sources"], "Heading 2")
-        for item in script["evidence"]:
-            tagged(item["id"], item["observation"])
-            source = item["source"]
-            if "time_seconds" in item:
-                source += f"  /  {tc(item['time_seconds'])}"
-            para(source, "Caption")
+                p = para("")
+                speaker, colon, words = line.partition(":")
+                if not colon:
+                    speaker, colon, words = line.partition("：")
+                if colon and len(speaker) <= 40:
+                    p.add_run(speaker + colon).bold = True
+                    p.add_run(words)
+                else:
+                    p.add_run(line)
+            tagged(labels['onscreen'], scene['onscreen_text'], 11)
+            # Scene-specific direction stays next to the scene; broader analysis is a companion.
+            tagged(labels['notes'], scene['notes'], 11)
+            paragraphs = doc.paragraphs[first:]
+            text_units = sum(2 if unicodedata.east_asian_width(c) in ("W", "F") else 1 for p in paragraphs for c in p.text)
+            short_scene = text_units <= 850
+            for n, p in enumerate(paragraphs):
+                p.paragraph_format.keep_together = len(p.text) <= 600
+                # Keep short scenes intact. Long spoken passages may flow naturally.
+                p.paragraph_format.keep_with_next = (n < len(paragraphs) - 1 if short_scene else first + n < first_audio)
+    from preview import production_sections
+    if include_notes:
+        doc.add_page_break()
+        para(labels['support'], 'Heading 1')
+        for title, entries in production_sections(script):
+            para(title, 'Heading 2')
+            for label, content in entries:
+                tagged(label, content) if label else para(content)
     footer = section.footer.paragraphs[0]
     footer.alignment = WD_ALIGN_PARAGRAPH.RIGHT
-    footer.add_run("BRAND PARTNERSHIP PITCH  /  ").font.size = Pt(8)
+    section.footer_distance = Inches(.15)
     field = OxmlElement("w:fldSimple")
     field.set(qn("w:instr"), "PAGE")
     footer._p.append(field)
@@ -185,7 +181,9 @@ def render(script_path, out, *, theme_path=None, docx_only=False, soffice=None, 
     manifest = {"script_sha256": file_digest(script_path), "created_at": datetime.now(timezone.utc).isoformat(),
                 "files": {"docx": {"path": "script.docx", "sha256": file_digest(path)},
                           "html": {"path": "script.html", "sha256": file_digest(out / "script.html")},
-                          "text": {"path": "script.txt", "sha256": file_digest(out / "script.txt")}},
+                          "text": {"path": "script.txt", "sha256": file_digest(out / "script.txt")},
+                          "notes": {"path": "production-notes.md", "sha256": file_digest(out / "production-notes.md")}},
+                "layout": {"name": "single-column", "page_width_inches": theme["page_width_inches"], "body_size": theme["body_size"], "notes_appended": include_notes},
                 "validation": report, "visual_qa": "pending", "pages": []}
     write_json(out / "export.json", manifest)
     if docx_only:

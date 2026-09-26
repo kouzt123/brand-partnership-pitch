@@ -275,6 +275,44 @@ class DocumentTests(Base):
         with self.assertRaises(SkillError):
             record_qa(self.root / "export", [1], "Cannot verify without page renders")
 
+    def test_compact_export_retains_supporting_context_without_av_tables(self):
+        from docx import Document
+        doc = deepcopy(self.script)
+        doc['brief']['facts'] = ['A verified supporting fact']
+        doc['variations'][0]['production'] = ['A production constraint worth retaining']
+        path = self.root / 'compact.json'
+        write_json(path, doc)
+        result = render(path, self.root / 'compact', docx_only=True, allow_missing_images=True)
+        output = Document(self.root / 'compact/script.docx')
+        self.assertFalse(output.tables)
+        self.assertLess(output.sections[0].page_width.inches, 6)
+        self.assertGreaterEqual(output.styles['Normal'].font.size.pt, 12)
+        text = '\n'.join(p.text for p in output.paragraphs)
+        self.assertIn(doc['summary'], text)
+        for scene in doc['variations'][0]['scenes']:
+            for key in ('visual', 'audio', 'onscreen_text', 'notes'):
+                self.assertIn(scene[key], text)
+        notes = (self.root / 'compact/production-notes.md').read_text()
+        self.assertIn('A verified supporting fact', notes)
+        self.assertIn('A production constraint worth retaining', notes)
+        self.assertNotIn('A production constraint worth retaining', text)
+        self.assertIn('notes', result['files'])
+        self.assertFalse(result['layout']['notes_appended'])
+        html = (self.root / 'compact/script.html').read_text()
+        self.assertIn('<details>', html)
+        self.assertNotIn('<table>', html)
+
+    def test_all_in_one_export_appends_notes_on_request(self):
+        from docx import Document
+        doc = deepcopy(self.script)
+        doc['brief']['facts'] = ['Keep this fact in the all-in-one document']
+        path = self.root / 'full.json'
+        write_json(path, doc)
+        result = render(path, self.root / 'full', docx_only=True, allow_missing_images=True, include_notes=True)
+        text = '\n'.join(p.text for p in Document(self.root / 'full/script.docx').paragraphs)
+        self.assertIn(doc['brief']['facts'][0], text)
+        self.assertTrue(result['layout']['notes_appended'])
+
     def test_export_never_silently_omits_missing_images(self):
         path = self.root / "script.json"
         write_json(path, self.script)

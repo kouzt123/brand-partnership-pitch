@@ -12,7 +12,7 @@
 
 ## 实际案例：MrBeast × iPhone Duo
 
-**一个频道 + 一个产品需求 → 三套完整脚本、六张分镜和五页可编辑脚本文档。**
+**一个频道 + 一个产品需求 → 三套完整脚本、六张分镜和适合手机阅读的单栏脚本文档。**
 
 > **非官方概念广告，不代表真实合作或代言。** 情节、台词、参与者与奖金均为创意设定。产品信息依据 Apple 官方资料；主播形象使用真实 TikTok 视频帧作为图片参考。
 
@@ -98,7 +98,7 @@ codex plugin add brand-partnership-pitch@brand-partnership-pitch-marketplace
 
 ## 验证和安全
 
-核心工作流已通过 40 项行为测试，并实际验证三个平台抓取、下载和 ElevenLabs 转写；本次更名发布会再次检查。详见[验收记录](skills/brand-partnership-pitch/references/validation.md)。这些结果不保证所有受限视频都可访问；记录中的本地 faster-whisper 模型推理尚未实测。
+核心工作流已通过 42 项行为测试，并实际验证三个平台抓取、下载和 ElevenLabs 转写；单栏排版另经图文脚本与中文长台词样例验证。详见[验收记录](skills/brand-partnership-pitch/references/validation.md)。这些结果不保证所有受限视频都可访问；记录中的本地 faster-whisper 模型推理尚未实测。
 
 发布内容包含源码、说明、公开图标、虚构结构测试素材和明确标注的概念案例，不包含用户密钥、真实频道视频、主播原始照片、私人 brief、生产数据或测试运行目录。安全扫描只报告文件与问题类型，不回显命中的密钥。CI 不需要配置任何 API secret。
 

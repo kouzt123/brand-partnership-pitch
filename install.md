@@ -7,7 +7,7 @@ codex plugin marketplace add kouzt123/brand-partnership-pitch
 codex plugin add brand-partnership-pitch@brand-partnership-pitch-marketplace
 ```
 
-This repository has its own marketplace name so it can coexist with other plugin repositories. The marketplace currently pins the plugin to `v1.0.0`. Refresh/start a new Codex task after installation, then invoke `$brand-partnership-pitch`.
+This repository has its own marketplace name so it can coexist with other plugin repositories. The marketplace currently pins the plugin to `v1.1.0`. Refresh/start a new Codex task after installation, then invoke `$brand-partnership-pitch`.
 
 To update when a new release is available:
 

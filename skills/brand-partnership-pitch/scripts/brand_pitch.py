@@ -127,6 +127,7 @@ def parser():
     q.add_argument("--theme")
     q.add_argument("--soffice", help="Verified bundled LibreOffice executable in Codex")
     q.add_argument("--docx-only", action="store_true")
+    q.add_argument("--include-notes", action="store_true", help="Append full brief, review and source notes to the compact DOCX/PDF")
     q.add_argument("--allow-missing-images", action="store_true", help="Explicit text-only/degraded export; visibly labels missing illustrations")
     q = sub.add_parser("qa", help="Record a real human/agent visual inspection of all exported pages")
     q.add_argument("--export", required=True)
@@ -249,7 +250,7 @@ def execute(a):
         return revision_diff(read_json(a.before), read_json(a.after))
     if a.command == "render":
         from documents import render
-        result = render(a.script, a.out, theme_path=a.theme, docx_only=a.docx_only, soffice=a.soffice, allow_missing_images=a.allow_missing_images)
+        result = render(a.script, a.out, theme_path=a.theme, docx_only=a.docx_only, soffice=a.soffice, allow_missing_images=a.allow_missing_images, include_notes=a.include_notes)
         return {"export": a.out, "pages": len(result["pages"]), "visual_qa": result["visual_qa"]}
     if a.command == "qa":
         from documents import record_qa

@@ -106,3 +106,5 @@ Reviewed during implementation, 2026-09-22; recheck schemas when a live adapter 
 - `render`: also produces self-contained AV-table HTML and plain text. HTML is local until a separately authorized host publishes it.
 
 Use Python 3.10+ for yt-dlp too; older Python can silently limit pip to an obsolete downloader version. If YouTube changes its download protocol or blocks the environment, retain metadata and report missing video evidence. Use another accessible source of the same clip or user-provided local video; do not claim metadata alone constitutes visual analysis. Never import browser cookies automatically.
+
+Compact single-column Word/PDF is the default. The same export writes `production-notes.md` with the complete brief, review, checklist and sources. Add `--include-notes` to `render` for an all-in-one document.

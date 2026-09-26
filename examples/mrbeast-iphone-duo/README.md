@@ -4,7 +4,7 @@
 
 > **Unofficial concept ad.** This is an independent demonstration of Brand Partnership Pitch, not a real MrBeast/Apple collaboration or endorsement. Dialogue, participants and the $10,000 prize are fictional.
 
-**[Read the 5-page PDF](script.pdf)** · **[Download editable Word](script.docx)** · [Copy the script](script.md) · [Two complete alternatives](alternatives.md)
+**[Read the 6-page PDF](script.pdf)** · **[Download editable Word](script.docx)** · [Copy the script](script.md) · [Two complete alternatives](alternatives.md)
 
 ## The brief
 
@@ -26,9 +26,9 @@ The selected story creates a simple obstacle: everybody must be in the photograp
 
 ## The actual document output
 
-These are rendered pages from the downloadable DOCX, not recreated mockups. Visual directions and dialogue remain editable. The PDF contains the brief, all six scenes, timecodes, screen copy, production notes, review and source references.
+These are rendered pages from the downloadable DOCX, not recreated mockups. Visual directions and dialogue remain editable. The compact PDF contains all six scenes, timecodes, screen copy and scene notes in a single reading column. Full brief, review, checklist and sources are available in [production notes](production-notes.md). The default is a narrow page with 12 pt text; the first page starts the first scene, with no separate cover.
 
-| Script pages 1 and 2 of the scene section | Product use and group payoff setup |
+| Scene 2 and complete dialogue | Scene 3 and product direction |
 | --- | --- |
 | [![Actual document page 2](previews/page-02.png)](script.pdf) | [![Actual document page 3](previews/page-03.png)](script.pdf) |
 
@@ -41,7 +41,7 @@ These are rendered pages from the downloadable DOCX, not recreated mockups. Visu
 | Creative development | 3 complete scripts; 2 separate Codex review passes. |
 | Identity continuity | Actual source frames supplied in every host scene, with previous panels as additional continuity references. |
 | Storyboards | 6 selected-route panels; visual inspection and 2 targeted corrections. |
-| Documents | Editable DOCX and matching 5-page PDF; all pages rendered and visually inspected. |
+| Documents | Single-column DOCX and matching 6-page PDF; all pages rendered and visually inspected. Supporting material is in a separate notes file. |
 
 The recommendation scored 91/100 under the skill's editorial rubric. This is a subjective creative assessment, not a predicted success rate or independent-model consensus. The other complete routes scored 86 and 85 and remain text-only.
 
@@ -52,3 +52,5 @@ The recommendation scored 91/100 under the skill's editorial rubric. This is a s
 这是一个**非官方概念广告**：用 MrBeast 的 TikTok 频道和 iPhone Duo 需求，演示从内容分析、三套脚本、真实主播参考生图，到可编辑拍摄文档的全过程，并不表示存在真实合作或代言。
 
 推荐创意「所有人都进照片」把产品用法放进故事：提出合影奖金 → 发现主播缺席 → 摆放折叠手机 → 主播加入合影 → 众人反应 → 产品收尾。上方六张分镜和文档页都来自这次实际生成的输出。原视频画面确实作为图片输入传给了 imagegen；原始视频、参考照片、字幕全文和凭据没有上传。
+
+新版排版采用窄幅单栏、12 pt 正文和纵向分镜顺序；第一页直接开始脚本。六镜主文档保留全部台词、画面和逐镜备注，完整 brief、评分、拍摄清单与来源保存在[制作备忘](production-notes.md)。
