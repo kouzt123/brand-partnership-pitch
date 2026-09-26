@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "title": "一张桌子，两种开工方式",
+  "language": "zh-CN",
+  "summary": "用一个直观的桌面对比，把抽象的整理建议变成可立即执行的小动作。以轻松口吻给出一个具体方法，让观众看完就能试一次。",
+  "visual_style": "Black and white hand-drawn storyboard, clean lines, minimal shading, white paper, no text.",
+  "channel": {
+    "name": "小林的桌面实验室",
+    "platform": "local"
+  },
+  "brief": {
+    "kind": "organic",
+    "objective": "用 30 秒演示一个简单的桌面整理动作，让观众尝试为下一项任务腾出空间。",
+    "audience": "在家学习或工作的观众",
+    "facts": [
+      "演示只使用笔记本、杯子、书和一只收纳盘。"
+    ],
+    "must_include": [
+      "同一桌面的整理前后对比",
+      "一条可以马上执行的建议"
+    ],
+    "must_avoid": [
+      "承诺提升效率的具体百分比",
+      "任何品牌或付费产品植入"
+    ]
+  },
+  "cast": [
+    {
+      "id": "host",
+      "name": "小林",
+      "role": "演示者",
+      "appearance": "虚构成年人物，短黑发，宽松衬衫；仅用于结构测试，不代表真实频道人物。",
+      "identity": "fictional"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "e1",
+      "source": "Fictional demonstration brief (examples/requirement.txt)",
+      "observation": "需求指定同一桌面的整理前后对比；此示例没有真实频道风格分析。"
+    }
+  ],
+  "variations": [
+    {
+      "id": "v1",
+      "title": "给下一件事留一个位置",
+      "angle": "以找不到笔的小困扰开场，再通过一次连续动作完成视觉反差。",
+      "hook": "每次开工，我都先花时间找地方。",
+      "format": "自然内容 · 桌面演示",
+      "fit_reason": "围绕需求中的日常桌面场景展开。一个人物、一个机位和现有道具即可完成，动作本身承担叙事。",
+      "recommended": true,
+      "duration_seconds": 30,
+      "aspect_ratio": "16:9",
+      "scenes": [
+        {
+          "id": "s1",
+          "title": "还没开始，先找地方",
+          "start": 0,
+          "end": 12,
+          "visual": "固定中景。小林坐在桌后，桌面散放两本书、一只杯子和几支笔。小林举着一本打开的笔记本，看了看桌面，试着寻找放下它的位置。留出桌面中央的动作空间。",
+          "audio": "小林：每次开工，我都先花时间找地方。\n[低头看一眼桌面，停顿一秒。]\n小林：今天，我只改一件事。",
+          "onscreen_text": "先给下一件事留位置",
+          "notes": "前后两场保持相同焦段、机位与光线。动作留足时间，不加快速跳切。",
+          "cast_ids": [
+            "host"
+          ],
+          "evidence_ids": [
+            "e1"
+          ],
+          "image_prompt": "Single wide storyboard panel. Fictional short-black-haired adult host wearing plain overshirt, seated at a light wood desk, holding an open notebook above a cluttered center. Two books, a mug, and pens on desk. Simple home workspace, black and white sketch, minimal shading. No lettering."
+        },
+        {
+          "id": "s2",
+          "title": "腾出一个动作的位置",
+          "start": 12,
+          "end": 30,
+          "visual": "同一固定中景。小林把杯子和笔移入桌面左侧的浅色收纳盘，将书叠在后侧，再把笔记本放到空出的中央，拿笔写下第一行。结尾切一个桌面俯拍，停留两秒。",
+          "audio": "小林：暂时不用的，先放到一边。中间，只留下一件事。\n[放下笔记本，写下第一行。]\n小林：你也试试。不用收拾整个房间，先腾出这一个位置。",
+          "onscreen_text": "中间，只留下一件事",
+          "notes": "收纳盘提前放在画外左侧。最后俯拍需要补拍，物品位置与中景一致。",
+          "cast_ids": [
+            "host"
+          ],
+          "evidence_ids": [
+            "e1"
+          ],
+          "image_prompt": "Single wide storyboard panel matching the prior scene. Same fictional host, plain overshirt, light wood desk and daylight. Desk center now clear, open notebook at center; host writes first line. Mug and pens inside a pale tray at the left, two books stacked at the rear. No legible writing or captions."
+        }
+      ],
+      "production": [
+        "人物：小林一人。",
+        "场地：有自然光的桌面，背景保持整洁。",
+        "道具：笔记本、笔、杯子、两本书、收纳盘。",
+        "镜头：固定中景加结尾桌面俯拍。"
+      ],
+      "requirements_check": [
+        "同机位的两场呈现整理前后对比。",
+        "建议落在‘为下一件事腾出位置’，没有引入购买要求。",
+        "没有效率百分比、品牌声明或使用效果保证。"
+      ]
+    }
+  ],
+  "storyboard_contract": "brand-pitch-bw-v1"
+}

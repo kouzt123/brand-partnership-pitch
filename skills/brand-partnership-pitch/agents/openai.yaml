@@ -1,0 +1,6 @@
+interface:
+  display_name: "Brand Partnership Pitch Script"
+  short_description: "Creator scripts with actual-host black-and-white storyboards"
+  default_prompt: "Use $brand-partnership-pitch to turn this creator channel and brief into a polished script document with black-and-white sketches preserving the actual creator, three reviewed alternatives, editable DOCX and PDF."
+policy:
+  allow_implicit_invocation: true

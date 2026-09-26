@@ -1,0 +1,3 @@
+# Optional: local ASR and platform media download. No cloud LLM dependencies.
+faster-whisper>=1.1,<2
+yt-dlp>=2026.8.19

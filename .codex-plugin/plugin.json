@@ -1,0 +1,41 @@
+{
+  "name": "brand-partnership-pitch",
+  "version": "1.0.0",
+  "description": "Creator-matched brand scripts, actual-host black-and-white storyboards and editable production documents.",
+  "author": {
+    "name": "kouzt123",
+    "url": "https://github.com/kouzt123"
+  },
+  "homepage": "https://github.com/kouzt123/brand-partnership-pitch",
+  "repository": "https://github.com/kouzt123/brand-partnership-pitch",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "creator",
+    "brand-partnership",
+    "storyboard",
+    "video-script"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Brand Partnership Pitch",
+    "shortDescription": "Creator scripts and actual-host black-and-white storyboards",
+    "longDescription": "Turn a creator channel and brand brief into three reviewed scripts, reference-image storyboards, editable Word/PDF documents and scene-level revisions. Codex recommended; other agents require compatible image generation.",
+    "developerName": "kouzt123",
+    "category": "Marketing",
+    "capabilities": [
+      "Read",
+      "Write",
+      "Interactive"
+    ],
+    "websiteURL": "https://github.com/kouzt123/brand-partnership-pitch",
+    "brandColor": "#4F46E5",
+    "composerIcon": "./assets/icon.svg",
+    "logo": "./assets/icon.svg",
+    "defaultPrompt": [
+      "Use brand-partnership-pitch with this creator channel and brief.",
+      "Generate three creator-matched scripts and illustrate the recommended one.",
+      "Revise this script while preserving approved visuals and dialogue."
+    ]
+  }
+}

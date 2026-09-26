@@ -1,0 +1,16 @@
+NotoSansCJKsc-Regular.otf is unmodified Noto Sans CJK SC, distributed under
+the SIL Open Font License 1.1 in OFL.txt. The skill's MIT license does not
+replace the font license. Copyright information is also embedded in the font.
+
+Copyright © 2014-2021 Adobe (http://www.adobe.com/).
+Font version: 2.004.
+
+Upstream: https://github.com/notofonts/noto-cjk
+File: Sans/OTF/SimplifiedChinese/NotoSansCJKsc-Regular.otf
+Retrieved: 2026-09-22
+SHA-256: 2c76254f6fc379fddfce0a7e84fb5385bb135d3e399294f6eeb6680d0365b74b
+
+The renderer adds this directory to its process-local fontconfig configuration;
+it does not install fonts into the operating system. For consistent DOCX editing
+outside this renderer, use a compatible locally available CJK font or install
+this OFL font through your operating system's normal font controls.

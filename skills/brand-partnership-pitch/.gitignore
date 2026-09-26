@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+.env.*
+jobs/
+output/
+dist/
+*.zip
+*.log
+*.mp4
+*.wav
+cookies*
