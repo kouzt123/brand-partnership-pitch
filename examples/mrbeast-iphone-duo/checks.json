@@ -1,0 +1,89 @@
+{
+  "case": "MrBeast iPhone Duo unofficial concept",
+  "generated_at": "2026-09-26",
+  "selected_duration_seconds": 40,
+  "selected_scenes": 6,
+  "script_alternatives": 3,
+  "illustrated_alternatives": 1,
+  "pdf_pages": 5,
+  "validation": {
+    "valid": true,
+    "errors": [],
+    "warnings": []
+  },
+  "page_visual_review": {
+    "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "status": "passed",
+    "canonical_renderer": "documents render_docx.py"
+  },
+  "image_generation": "Codex built-in imagegen with actual reference images",
+  "raw_media_published": false,
+  "files": {
+    "README.md": {
+      "sha256": "39033cae65cf3055417e30f8befd6f249c6eefff2aed507f999d66dc36c13cc1",
+      "bytes": 4215
+    },
+    "alternatives.md": {
+      "sha256": "b45985c3c21cfba4654865094ab4f87e4767eda954f5b526ea6c171bac20cb39",
+      "bytes": 3629
+    },
+    "previews/page-02.png": {
+      "sha256": "17fdf4bcd28e6db87210a7f5b4c3937077fcc1331512066cbf3494563dafe405",
+      "bytes": 496494
+    },
+    "previews/page-03.png": {
+      "sha256": "0c11f217d185d24b2c5e498bcd2b711d4105e898df88511d992b79078b3d42ed",
+      "bytes": 383423
+    },
+    "prompts.md": {
+      "sha256": "fd7b3a5bf3298ff9d07745371563f9ca90ca66cf0dab9ba61a2426639067294f",
+      "bytes": 2883
+    },
+    "script.docx": {
+      "sha256": "f56f04f104260867775c6c3125792b3dd516360b5024f2d1e4cc49197974a2d7",
+      "bytes": 14588331
+    },
+    "script.md": {
+      "sha256": "840437a2da58e515db817fc2570af006563a55bc7a47d7e24875f0cd82b7d0db",
+      "bytes": 3072
+    },
+    "script.pdf": {
+      "sha256": "c2d5b79b92e4f1ad61c06dc24e954913218893f05bc0578f5b85cc916ce8e759",
+      "bytes": 646949
+    },
+    "sources.md": {
+      "sha256": "140d778dab978e40f14550f3414d8583d315ca20f03d0be6f9a3c5cc3eee9fd4",
+      "bytes": 2546
+    },
+    "storyboards/scene-01.png": {
+      "sha256": "cd2d8f2954b3071f56120ce7c3f3ac88bcc5030f4c2cadf1085d2f5b4bd43bfd",
+      "bytes": 2531628
+    },
+    "storyboards/scene-02.png": {
+      "sha256": "e52258d9a3ac4f924c32077b2ad1a7c6090af25c9dad30265a2b448810a9585f",
+      "bytes": 2577058
+    },
+    "storyboards/scene-03.png": {
+      "sha256": "c54e5ffe4a961418ee35aa24b5259a9443b6ace0a72dc5b3323f06891e643526",
+      "bytes": 1812295
+    },
+    "storyboards/scene-04.png": {
+      "sha256": "9e6f51901d529f655f47dfd4242014e890fb500ac64ab11bba78d236ccef6956",
+      "bytes": 2628810
+    },
+    "storyboards/scene-05.png": {
+      "sha256": "b16794e8a0bf7681ee9452081d06c743c7a97ed7571d182f1571b027a2a205ac",
+      "bytes": 2753115
+    },
+    "storyboards/scene-06.png": {
+      "sha256": "af925c3897d550b338f5943d17a4c88f9e0209e1f0e62f4ed8906492a7010600",
+      "bytes": 2353878
+    }
+  }
+}

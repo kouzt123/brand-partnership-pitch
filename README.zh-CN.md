@@ -10,6 +10,20 @@
 
 虽然仓库名包含 Pitch，它的实际产出是品牌视频创意和拍摄脚本，不是商务邀约邮件或合同谈判文案。
 
+## 实际案例：MrBeast × iPhone Duo
+
+**一个频道 + 一个产品需求 → 三套完整脚本、六张分镜和五页可编辑脚本文档。**
+
+> **非官方概念广告，不代表真实合作或代言。** 情节、台词、参与者与奖金均为创意设定。产品信息依据 Apple 官方资料；主播形象使用真实 TikTok 视频帧作为图片参考。
+
+| 开场提出奖励 | 产品解决拍摄问题 | 所有人都进照片 |
+| --- | --- | --- |
+| ![非官方概念分镜：MrBeast 提出合影奖励](examples/mrbeast-iphone-duo/storyboards/scene-01.png) | ![产品分镜：折叠摆放 iPhone Duo](examples/mrbeast-iphone-duo/storyboards/scene-03.png) | ![非官方概念分镜：主播加入合影](examples/mrbeast-iphone-duo/storyboards/scene-04.png) |
+
+**[查看完整案例与六张分镜](examples/mrbeast-iphone-duo/README.md)** · **[阅读 PDF](examples/mrbeast-iphone-duo/script.pdf)** · **[下载可编辑 Word](examples/mrbeast-iphone-duo/script.docx)** · [另外两套完整脚本](examples/mrbeast-iphone-duo/alternatives.md)
+
+推荐方案「所有人都进照片」是一支 40 秒概念广告：合影奖励、缺席的摄影者、产品登场和众人反应组成完整故事。案例页还展示实际文档页面、带时间点的内容分析依据和生图说明。
+
 ## 能力
 
 - 三套不同创意的完整脚本，匹配实际观察到的频道形式、表达和制作条件。
@@ -86,6 +100,6 @@ codex plugin add brand-partnership-pitch@brand-partnership-pitch-marketplace
 
 核心工作流已通过 40 项行为测试，并实际验证三个平台抓取、下载和 ElevenLabs 转写；本次更名发布会再次检查。详见[验收记录](skills/brand-partnership-pitch/references/validation.md)。这些结果不保证所有受限视频都可访问；记录中的本地 faster-whisper 模型推理尚未实测。
 
-发布内容只有源码、说明、公开图标和虚构结构测试素材，不包含用户密钥、真实频道视频、主播原始照片、私人 brief、生产数据或测试运行目录。安全扫描只报告文件与问题类型，不回显命中的密钥。CI 不需要配置任何 API secret。
+发布内容包含源码、说明、公开图标、虚构结构测试素材和明确标注的概念案例，不包含用户密钥、真实频道视频、主播原始照片、私人 brief、生产数据或测试运行目录。安全扫描只报告文件与问题类型，不回显命中的密钥。CI 不需要配置任何 API secret。
 
 代码使用 MIT；随包中文字体保留独立 OFL 许可。代码许可证不授予第三方创作者素材的使用权。

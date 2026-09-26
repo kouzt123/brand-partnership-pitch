@@ -1,5 +1,11 @@
 # Changelog
 
+## Documentation showcase — 2026-09-26
+
+- Added the unofficial MrBeast / iPhone Duo concept case: three scripts, six reference-based storyboard frames and a reviewed five-page DOCX/PDF.
+- Added visual examples and download links to both READMEs, with source provenance and explicit concept labels.
+- Extended release scanning to inspect DOCX internals and PDF text/metadata. The installed skill remains at v1.0.0.
+
 ## 1.0.0 — 2026-09-26
 
 Initial public release under the `brand-partnership-pitch` invocation name.

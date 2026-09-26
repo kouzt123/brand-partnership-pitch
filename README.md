@@ -10,6 +10,20 @@
 
 Despite the repository name, this skill produces branded video concepts and production scripts, not outreach emails or contract negotiations.
 
+## See it in action: MrBeast × iPhone Duo
+
+**One channel + one product brief → three scripts, six storyboard frames and a five-page editable script document.**
+
+> **Unofficial concept ad — not a real collaboration or endorsement.** The scenario, dialogue, participants and prize are fictional. Product information comes from Apple; the host's appearance is referenced from actual TikTok video frames.
+
+| The offer | The product solves the problem | Everybody makes the photo |
+| --- | --- | --- |
+| ![Unofficial MrBeast concept storyboard: the offer](examples/mrbeast-iphone-duo/storyboards/scene-01.png) | ![Concept iPhone Duo storyboard: fold and place](examples/mrbeast-iphone-duo/storyboards/scene-03.png) | ![Unofficial MrBeast concept storyboard: the group photo](examples/mrbeast-iphone-duo/storyboards/scene-04.png) |
+
+**[View the full demo and all six scenes](examples/mrbeast-iphone-duo/README.md)** · **[Read the PDF](examples/mrbeast-iphone-duo/script.pdf)** · **[Download Word](examples/mrbeast-iphone-duo/script.docx)** · [Two other scripts](examples/mrbeast-iphone-duo/alternatives.md)
+
+The selected 40-second concept, *Everybody in the photo*, turns a group-photo giveaway into a demonstration of hands-free capture. The demo includes the real document pages, timestamped source notes and generation details.
+
 ## What you get
 
 - Three distinct, complete scripts matched to observed creator formats, voice and production resources.
@@ -113,4 +127,4 @@ python skills/brand-partnership-pitch/scripts/brand_pitch.py doctor
 
 The existing workflow passed 40 behavioral tests and live platform/transcription canaries. The renamed publication is checked again before release. See [validation details and limits](skills/brand-partnership-pitch/references/validation.md). Tests do not guarantee access to every protected video or all future provider versions. Local faster-whisper model inference has not been live-tested in the recorded acceptance run.
 
-Only fictional structural fixtures are distributed. Real-person reference frames, downloaded media, live API datasets, private briefs and generated acceptance artifacts are excluded. The MIT code license does not grant rights to third-party creator media. The bundled CJK font retains its [OFL license](skills/brand-partnership-pitch/assets/fonts/OFL.txt).
+Fictional structural fixtures and the explicitly published concept demo are distributed. Real-person source frames, downloaded media, live API datasets, private briefs and private acceptance artifacts are excluded. The MIT code license does not grant rights to third-party creator media. The bundled CJK font retains its [OFL license](skills/brand-partnership-pitch/assets/fonts/OFL.txt).
